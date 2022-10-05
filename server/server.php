@@ -4,7 +4,7 @@ header('Access-Control-Allow-Origin: *');
 $servername = "localhost";
 $username   = "root";
 $password   = "";
-$dbname     = "angular_mysqlv2";
+$dbname     = "angular_mysqlv1";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
