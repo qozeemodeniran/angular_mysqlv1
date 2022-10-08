@@ -1,0 +1,19 @@
+<h1 style="text-align: center">Statically fecth data from database</h1>
+<h3 style="text-align: center">IT 7131 Project</h3>
+<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let info of information">
+      <td>{{ info.name }}</td>
+      <td>{{ info.email }}</td>
+    </tr>
+  </tbody>
+</table>
+<br /> <br />
+<h1 style="text-align: center">Dynamically add rows to table</h1>
+<h3 style="text-align: center">IT 7131 Project</h3>
