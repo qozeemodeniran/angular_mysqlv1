@@ -10,12 +10,41 @@ import { Subject } from 'rxjs';
 export class AppComponent implements OnInit{
   title = 'app2';
   dtOptions: DataTables.Settings = {};
-  information;
-  // information: any[] = [];
+  information; // from database
+  // dummy_data = {dummy_name: "Dummy Name", dummy_email: "Dummy Email"}; // hardcoded data
+  // var dummy_data = [{
+  //   'dummy_name': 'Dummy Name', 
+  //   'dummy_email': 'Dummy Email'
+  // }];
+  dummy_data = [
+    {
+      dummy_name: "Dummy Name", 
+      dummy_email: "Dummy Email"
+    },
+    {
+      dummy_name: "Dummy Name", 
+      dummy_email: "Dummy Email"
+    }
+  ];
+
   dtTrigger: Subject<any> = new Subject<any>();
   
   
   constructor(private http: HttpClient) { }
+
+  addRows() {
+    var k = '<tbody>'
+    for(let i = 0; i < this.dummy_data!.length; i++) {
+      k+='<tr>';
+      k+='<td>' + this.dummy_data[i].dummy_name + '</td>';
+      k+='<td>' + this.dummy_data[i].dummy_email + '</td>';
+      k+='</tr>';
+    }
+    k+= '</tbody>';
+    document.getElementById('tdata').innerHTML = k;
+  }
+
+    // return this.dummy_data;
   
   ngOnInit(): void {
     this.dtOptions = {

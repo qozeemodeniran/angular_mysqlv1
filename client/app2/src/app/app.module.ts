@@ -5,10 +5,12 @@ import { AppComponent } from './app.component';
   
 import { DataTablesModule } from 'angular-datatables';
 import { HttpClientModule } from '@angular/common/http';
+import { ListComponentComponent } from './list-component/list-component.component';
   
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ListComponentComponent
   ],
   imports: [
     BrowserModule,
