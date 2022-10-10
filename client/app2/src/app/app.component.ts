@@ -16,16 +16,70 @@ export class AppComponent implements OnInit{
   //   'dummy_name': 'Dummy Name', 
   //   'dummy_email': 'Dummy Email'
   // }];
+
   dummy_data = [
     {
-      dummy_name: "Dummy Name", 
-      dummy_email: "Dummy Email"
+      'dummy_name': 'Dummy Name', 
+      'dummy_email': 'Dummy Email'
     },
     {
-      dummy_name: "Dummy Name", 
-      dummy_email: "Dummy Email"
+      'dummy_name': 'Dummy Name', 
+      'dummy_email': 'Dummy Email'
+    },
+    {
+      'dummy_name': 'Dummy Name', 
+      'dummy_email': 'Dummy Email'
+    },
+    {
+      'dummy_name': 'Dummy Name', 
+      'dummy_email': 'Dummy Email'
+    },
+    {
+      'dummy_name': 'Dummy Name', 
+      'dummy_email': 'Dummy Email'
+    },
+    {
+      'dummy_name': 'Dummy Name', 
+      'dummy_email': 'Dummy Email'
+    },
+    {
+      'dummy_name': 'Dummy Name', 
+      'dummy_email': 'Dummy Email'
+    },
+    {
+      'dummy_name': 'Dummy Name', 
+      'dummy_email': 'Dummy Email'
+    },
+    {
+      'dummy_name': 'Dummy Name', 
+      'dummy_email': 'Dummy Email'
+    },
+    {
+      'dummy_name': 'Dummy Name', 
+      'dummy_email': 'Dummy Email'
+    },
+    {
+      'dummy_name': 'Dummy Name', 
+      'dummy_email': 'Dummy Email'
+    },
+    {
+      'dummy_name': 'Dummy Name', 
+      'dummy_email': 'Dummy Email'
+    },
+    {
+      'dummy_name': 'Dummy Name', 
+      'dummy_email': 'Dummy Email'
+    },
+    {
+      'dummy_name': 'Dummy Name', 
+      'dummy_email': 'Dummy Email'
+    },
+    {
+      'dummy_name': 'Dummy Name', 
+      'dummy_email': 'Dummy Email'
     }
   ];
+
 
   dtTrigger: Subject<any> = new Subject<any>();
   
@@ -34,14 +88,16 @@ export class AppComponent implements OnInit{
 
   addRows() {
     var k = '<tbody>'
-    for(let i = 0; i < this.dummy_data!.length; i++) {
+    // dummy_data.length = 6;
+    for(let i = 0; i < this.dummy_data.length; i++) {
       k+='<tr>';
       k+='<td>' + this.dummy_data[i].dummy_name + '</td>';
       k+='<td>' + this.dummy_data[i].dummy_email + '</td>';
       k+='</tr>';
     }
-    k+= '</tbody>';
-    document.getElementById('tdata').innerHTML = k;
+    k+= '</tbody>'; 
+    document.getElementById('tdata')!.innerHTML = k;
+    // this.dtTrigger.next(this.dummy_data);
   }
 
     // return this.dummy_data;
@@ -60,6 +116,8 @@ export class AppComponent implements OnInit{
         this.information = information;
         // this.information = (information as any).information;
         this.dtTrigger.next(information);
+
+        this.dtTrigger.next(this.dummy_data);
     });
   
   }
