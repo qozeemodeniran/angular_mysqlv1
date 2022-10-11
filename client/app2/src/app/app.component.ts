@@ -116,8 +116,6 @@ export class AppComponent implements OnInit{
         this.information = information;
         // this.information = (information as any).information;
         this.dtTrigger.next(information);
-
-        this.dtTrigger.next(this.dummy_data);
     });
   
   }
