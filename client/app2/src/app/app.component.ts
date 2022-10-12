@@ -12,69 +12,11 @@ export class AppComponent implements OnInit{
   dtOptions: DataTables.Settings = {};
   information; 
 
-  dummy_data = [
-    {
-      'dummy_name': 'Dummy Name', 
-      'dummy_email': 'Dummy Email'
-    },
-    {
-      'dummy_name': 'Dummy Name', 
-      'dummy_email': 'Dummy Email'
-    },
-    {
-      'dummy_name': 'Dummy Name', 
-      'dummy_email': 'Dummy Email'
-    },
-    {
-      'dummy_name': 'Dummy Name', 
-      'dummy_email': 'Dummy Email'
-    },
-    {
-      'dummy_name': 'Dummy Name', 
-      'dummy_email': 'Dummy Email'
-    },
-    {
-      'dummy_name': 'Dummy Name', 
-      'dummy_email': 'Dummy Email'
-    },
-    {
-      'dummy_name': 'Dummy Name', 
-      'dummy_email': 'Dummy Email'
-    },
-    {
-      'dummy_name': 'Dummy Name', 
-      'dummy_email': 'Dummy Email'
-    },
-    {
-      'dummy_name': 'Dummy Name', 
-      'dummy_email': 'Dummy Email'
-    },
-    {
-      'dummy_name': 'Dummy Name', 
-      'dummy_email': 'Dummy Email'
-    },
-    {
-      'dummy_name': 'Dummy Name', 
-      'dummy_email': 'Dummy Email'
-    },
-    {
-      'dummy_name': 'Dummy Name', 
-      'dummy_email': 'Dummy Email'
-    },
-    {
-      'dummy_name': 'Dummy Name', 
-      'dummy_email': 'Dummy Email'
-    },
-    {
-      'dummy_name': 'Dummy Name', 
-      'dummy_email': 'Dummy Email'
-    },
-    {
-      'dummy_name': 'Dummy Name', 
-      'dummy_email': 'Dummy Email'
-    }
-  ];
-
+  // dummy_data = [
+  //   { 'dummy_name': 'Dummy Name', 'dummy_email': 'Dummy Email' }
+  // ];
+  dummy_data: any = [{}];
+ 
   dtTrigger: Subject<any> = new Subject<any>();
   
   
@@ -95,6 +37,8 @@ export class AppComponent implements OnInit{
   }
 
   addRows() {
+    for(let d=1; d<1000; d++){ this.dummy_data.push({ 'dummy_name': 'Dummy Name', 'dummy_email': 'Dummy Email' })};
+
     var k = '<tbody>'
     for(let i = 0; i < this.dummy_data.length; i++) {
       k+='<tr>';
@@ -104,7 +48,6 @@ export class AppComponent implements OnInit{
     }
     k+= '</tbody>'; 
     document.getElementById('tdata')!.innerHTML = k;
-    // this.dtTrigger.next(k);
   }
 
   ngOnDestroy(): void {
