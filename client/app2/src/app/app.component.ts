@@ -10,12 +10,7 @@ import { Subject } from 'rxjs';
 export class AppComponent implements OnInit{
   title = 'app2';
   dtOptions: DataTables.Settings = {};
-  information; // from database
-  // dummy_data = {dummy_name: "Dummy Name", dummy_email: "Dummy Email"}; // hardcoded data
-  // var dummy_data = [{
-  //   'dummy_name': 'Dummy Name', 
-  //   'dummy_email': 'Dummy Email'
-  // }];
+  information; 
 
   dummy_data = [
     {
@@ -80,15 +75,27 @@ export class AppComponent implements OnInit{
     }
   ];
 
-
   dtTrigger: Subject<any> = new Subject<any>();
   
   
   constructor(private http: HttpClient) { }
+  
+  ngOnInit(): void {
+    this.dtOptions = {
+      pageLength: 10,
+      processing: true
+    };
+  
+    this.http.get('http://localhost/angular_mysqlv1/server/server.php')
+      .subscribe(information => {
+        this.information = information;
+        this.dtTrigger.next(information);
+    });
+  
+  }
 
   addRows() {
     var k = '<tbody>'
-    // dummy_data.length = 6;
     for(let i = 0; i < this.dummy_data.length; i++) {
       k+='<tr>';
       k+='<td>' + this.dummy_data[i].dummy_name + '</td>';
@@ -97,27 +104,7 @@ export class AppComponent implements OnInit{
     }
     k+= '</tbody>'; 
     document.getElementById('tdata')!.innerHTML = k;
-    // this.dtTrigger.next(this.dummy_data);
-  }
-
-    // return this.dummy_data;
-  
-  ngOnInit(): void {
-    this.dtOptions = {
-      // pagingType: 'full_numbers',
-      pageLength: 10,
-      processing: true
-    };
-  
-    this.http.get('http://localhost/angular_mysqlv1/server/server.php')
-      .subscribe(information => {
-        // this.information.push(information);
-        // console.log(this.information);
-        this.information = information;
-        // this.information = (information as any).information;
-        this.dtTrigger.next(information);
-    });
-  
+    // this.dtTrigger.next(k);
   }
 
   ngOnDestroy(): void {
