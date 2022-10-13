@@ -25,7 +25,8 @@ export class AppComponent implements OnInit{
   ngOnInit(): void {
     this.dtOptions = {
       pageLength: 10,
-      processing: true
+      processing: true,
+      destroy: true
     };
   
     this.http.get('http://localhost/angular_mysqlv1/server/server.php')
